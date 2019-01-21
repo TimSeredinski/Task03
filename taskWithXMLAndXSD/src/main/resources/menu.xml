@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<menu   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.epam.tr.by/menu"
+        xsi:schemaLocation="http://www.epam.tr.by/menu menuXSD.xsd">
+    <Cold-Dish id="1">
+        <img>images/dishes/dish1_1.jpg</img>
+        <name>Ассорти рыбное</name>
+        <description>Слабосоленая форель, семга</description>
+        <portion>110/20/15</portion>
+        <price>80</price>
+    </Cold-Dish>
+    <Cold-Dish id="2">
+        <img>images/dishes/dish1_2.jpg</img>
+        <name>Тарталетки с красной икрой</name>
+        <description>Тарталетки с красной икрой</description>
+        <portion>60/50</portion>
+        <price>130</price>
+    </Cold-Dish>
+    <Warm-Dish id="1">
+        <img>images/dishes/dish2_1.jpg</img>
+        <name>Лобио с шампиньонами</name>
+        <description>Фасоль с шампиньонами и грецким орехом</description>
+        <portion>150/5</portion>
+        <price>105</price>
+    </Warm-Dish>
+    <Breakfast id="1">
+        <img>images/dishes/dish3_1.jpg</img>
+        <name>Глазунья</name>
+        <description>2 яйца(на выбор ветчина,сыр,помидоры)</description>
+        <portion>150</portion>
+        <price>70</price>
+    </Breakfast>
+</menu>

@@ -1,0 +1,18 @@
+# Java
+*.jar
+*.war
+*.ear
+
+# Idea
+.idea
+*.iml
+*.iws
+*.ipr
+
+# Build
+out
+build
+bin
+
+target/
+log.txt
