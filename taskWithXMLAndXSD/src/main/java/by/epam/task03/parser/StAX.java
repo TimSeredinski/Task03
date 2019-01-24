@@ -18,13 +18,15 @@ import java.util.List;
 public class StAX {
 
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        URL resource = SAX.class.getResource("/menu.xml");
+        URL resource = StAX.class.getResource("/menu.xml");
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
         try {
             InputStream input = new FileInputStream(resource.toURI().getPath());
             XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
             List<Dish> menu = process(reader);
-            System.out.println(menu);
+            for (Dish dish : menu){
+                System.out.println(dish);
+            }
         } catch (XMLStreamException e) {
             e.printStackTrace();
         }
