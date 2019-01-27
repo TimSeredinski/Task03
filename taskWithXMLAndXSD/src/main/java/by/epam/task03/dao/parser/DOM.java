@@ -1,4 +1,4 @@
-package by.epam.task03.parser;
+package by.epam.task03.dao.parser;
 
 import by.epam.task03.entity.Dish;
 import com.sun.org.apache.xerces.internal.parsers.DOMParser;

@@ -1,7 +1,7 @@
-package by.epam.task03.parser;
+package by.epam.task03.dao.parser;
 
+import by.epam.task03.dao.parser.handler.MenuSaxHandler;
 import by.epam.task03.entity.Dish;
-import by.epam.task03.parser.handler.MenuSaxHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -13,16 +13,18 @@ import java.net.URL;
 import java.util.List;
 
 public class SAX {
-    public static void main(String[] args) throws SAXException, IOException, URISyntaxException {
+    public static List<Dish> parseWithSAX() {
         URL resource = SAX.class.getResource("/menu.xml");
-        XMLReader reader = XMLReaderFactory.createXMLReader();
         MenuSaxHandler handler = new MenuSaxHandler();
-        reader.setContentHandler(handler);
-        reader.parse(new InputSource(resource.toURI().getPath()));
-
+        try {
+            XMLReader reader = XMLReaderFactory.createXMLReader();
+            reader.setContentHandler(handler);
+            reader.parse(new InputSource(resource.toURI().getPath()));
+        }
+        catch (SAXException|URISyntaxException|IOException e){
+            e.printStackTrace();
+        }
         List<Dish> menu = handler.getDishList();
-        for (Dish dish : menu){
-            System.out.println(dish);
+        return menu;
         }
     }
-}

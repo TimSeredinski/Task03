@@ -1,4 +1,4 @@
-package by.epam.task03.parser.handler;
+package by.epam.task03.dao.parser.handler;
 
 import by.epam.task03.entity.Dish;
 import by.epam.task03.entity.MenuTagName;
