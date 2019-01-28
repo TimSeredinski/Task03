@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import static by.epam.task03.dao.parser.DOM.parseWithDOM;
 import static by.epam.task03.dao.parser.SAX.parseWithSAX;
+import static by.epam.task03.dao.parser.StAX.parseWithStAX;
 
 public class Controller extends HttpServlet {
 
@@ -18,11 +20,32 @@ public class Controller extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        System.out.println(request.getParameter("local"));
+//        if (request.getParameter("local") == null) {
+//            request.getSession().setAttribute("local", request.getParameter("local"));
+//        } else {
+//            request.getSession().setAttribute("local", request.getParameter("local"));
+//        }
+        request.getSession(true).setAttribute("local", request.getParameter("local"));
         response.setContentType("text/html");
-        List<Dish> dish = parseWithSAX();
+        List<Dish> dish;
+        switch (request.getRequestURI()) {
+            case "/SAXParser":
+                dish = parseWithSAX();
+                break;
+            case "/StAXParser":
+                dish = parseWithStAX();
+                break;
+            case "/DOMParser":
+                dish = parseWithDOM();
+                break;
+            default:
+                dish = parseWithSAX();
+                break;
+        }
         Object obj = dish;
         request.setAttribute("myMenu", obj);
-        if("menu".equals(request.getParameter("command"))){
+        if ("menu".equals(request.getParameter("command"))) {
             request.getRequestDispatcher("/WEB-INF/jsp/dishes.jsp").forward(request, response);
         }
     }

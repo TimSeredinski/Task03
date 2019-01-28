@@ -17,19 +17,19 @@ import java.util.List;
 
 public class StAX {
 
-    public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
+    public static List<Dish> parseWithStAX() {
+        System.out.println("StAX is working");
         URL resource = StAX.class.getResource("/menu.xml");
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+        List<Dish> menu = null;
         try {
             InputStream input = new FileInputStream(resource.toURI().getPath());
             XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
-            List<Dish> menu = process(reader);
-            for (Dish dish : menu){
-                System.out.println(dish);
-            }
-        } catch (XMLStreamException e) {
+            menu = process(reader);
+        } catch (XMLStreamException|URISyntaxException|FileNotFoundException e) {
             e.printStackTrace();
         }
+        return menu;
     }
 
     private static List<Dish> process(XMLStreamReader reader) throws XMLStreamException {

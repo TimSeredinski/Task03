@@ -7,17 +7,43 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.local}"/>
+<fmt:setBundle basename="resources.pageContent" var="loc"/>
 <html>
 <body>
-<c:forEach items="${myMenu}" var="dish">
+<table border="1">
+    <thead>
+    <tr>
+        <th><fmt:message key="thead.name" bundle="${loc}"/></th>
+        <th><fmt:message key="thead.image" bundle="${loc}"/></th>
+        <th><fmt:message key="thead.description" bundle="${loc}"/></th>
+        <th><fmt:message key="thead.portion" bundle="${loc}"/></th>
+        <th><fmt:message key="thead.price" bundle="${loc}"/></th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${myMenu}" var="dish">
     <jsp:useBean id="dish" class="by.epam.task03.entity.Dish" type="java.lang.Object" scope="request"/>
-        <jsp:getProperty name="dish" property="id"/>
-        <jsp:getProperty name="dish" property="name"/>
-        <jsp:getProperty name="dish" property="img"/>
-        <jsp:getProperty name="dish" property="description"/>
-        <jsp:getProperty name="dish" property="portion"/>
-        <jsp:getProperty name="dish" property="price"/>
-</c:forEach>
+    <tr>
+        <td><c:out value="${dish.name}"/></td>
+        <td><c:out value="${dish.img}"/></td>
+        <td><c:out value="${dish.description}"/></td>
+        <td><c:out value="${dish.portion}"/></td>
+        <td><c:out value="${dish.price}"/></td>
+    </tr>
+    </tbody>
+    </c:forEach>
+</table>
+<fmt:message key="button.name.ru" bundle="${loc}" var="ru_button"/>
+<fmt:message key="button.name.en" bundle="${loc}" var="en_button"/>
+<form action="Controller" method="post">
+    <input type="hidden" name="local" value="ru"/><br/>
+    <input type="submit" value="${ru_button}">
+</form>
+<form action="Controller" method="post">
+    <input type="hidden" name="local" value="en"/><br/>
+    <input type="submit" value="${en_button}">
+</form>
 </body>
 </html>

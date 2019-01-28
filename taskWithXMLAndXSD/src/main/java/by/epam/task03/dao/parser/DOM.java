@@ -16,11 +16,16 @@ import java.util.List;
 
 public class DOM {
 
-    public static void main(String[] args) throws URISyntaxException, IOException, SAXException {
+    public static List<Dish> parseWithDOM() {
+        System.out.println("DOM is working");
         DOM dom = new DOM();
         URL resource = DOM.class.getResource("/menu.xml");
         DOMParser parser = new DOMParser();
-        parser.parse(new InputSource(resource.toURI().getPath()));
+        try {
+            parser.parse(new InputSource(resource.toURI().getPath()));
+        } catch (SAXException | URISyntaxException | IOException e) {
+            e.printStackTrace();
+        }
         Document document = parser.getDocument();
         Element root = document.getDocumentElement();
 
@@ -32,9 +37,7 @@ public class DOM {
         menu = dom.addDishWithNodeList(menu, warmDishNodes);
         menu = dom.addDishWithNodeList(menu, breakfastNodes);
 
-        for (Dish d: menu){
-            System.out.println(d);
-        }
+        return menu;
     }
 
     private List<Dish> addDishWithNodeList(List<Dish> menu, NodeList nodeList) {
@@ -52,7 +55,7 @@ public class DOM {
         return menu;
     }
 
-    private static Element getSingleChild(Element element, String childName){
+    private static Element getSingleChild(Element element, String childName) {
         NodeList nodeList = element.getElementsByTagName(childName);
         Element child = (Element) nodeList.item(0);
         return child;

@@ -8,16 +8,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-  <title>Task 3</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Task 3</title>
 </head>
 <body>
 <h1>
-  index.jsp
-  <form action="SAXParser" method="post">
-    <input type="hidden" name="command" value="menu"/><br/>
-    <input type="submit" value="SAX">
-  </form>
+    index.jsp
+    <form action="SAXParser" method="post">
+        <input type="hidden" name="command" value="menu"/>
+        <input type="submit" value="SAX">
+    </form>
+    <form action="StAXParser" method="post">
+        <input type="hidden" name="command" value="menu"/>
+        <input type="submit" value="StAX">
+    </form>
+    <form action="DOMParser" method="post">
+        <input type="hidden" name="command" value="menu"/>
+        <input type="submit" value="DOM">
+    </form>
 </h1>
 </body>
 </html>

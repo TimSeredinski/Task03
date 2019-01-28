@@ -32,8 +32,6 @@ public class MenuSaxHandler extends DefaultHandler {
 
     public void startElement(String uri, String localName, String qName,
                              Attributes attributes) throws SAXException {
-        System.out.println("startElement -> " + "uri: " + uri + ", localName: " + localName
-                + ", qName: " + qName);
         text = new StringBuilder();
         if (qName.equals("Cold-Dish") || qName.equals("Warm-Dish") || qName.equals("Breakfast")) {
             dish = new Dish();

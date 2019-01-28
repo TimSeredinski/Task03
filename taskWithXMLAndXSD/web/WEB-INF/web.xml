@@ -11,4 +11,12 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/SAXParser</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/StAXParser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/DOMParser</url-pattern>
+    </servlet-mapping>
 </web-app>

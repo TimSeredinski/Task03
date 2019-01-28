@@ -14,6 +14,7 @@ import java.util.List;
 
 public class SAX {
     public static List<Dish> parseWithSAX() {
+        System.out.println("SAX is working");
         URL resource = SAX.class.getResource("/menu.xml");
         MenuSaxHandler handler = new MenuSaxHandler();
         try {
