@@ -2,6 +2,8 @@ package by.epam.task03.dao.parser;
 
 import by.epam.task03.entity.Dish;
 import by.epam.task03.entity.MenuTagName;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -17,8 +19,11 @@ import java.util.List;
 
 public class StAX {
 
+    //private static final Logger logger = LogManager.getLogger(StAX.class.getName());
+
     public static List<Dish> parseWithStAX() {
-        System.out.println("StAX is working");
+        //logger.info("StAX is working");
+        System.out.println(StAX.class.getName());
         URL resource = StAX.class.getResource("/menu.xml");
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
         List<Dish> menu = null;

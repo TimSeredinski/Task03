@@ -2,6 +2,8 @@ package by.epam.task03.dao.parser;
 
 import by.epam.task03.entity.Dish;
 import com.sun.org.apache.xerces.internal.parsers.DOMParser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -16,8 +18,11 @@ import java.util.List;
 
 public class DOM {
 
+    //private static final Logger logger = LogManager.getLogger(DOM.class.getName());
+
     public static List<Dish> parseWithDOM() {
-        System.out.println("DOM is working");
+        //logger.info("DOM is working");
+        System.out.println(DOM.class.getName());
         DOM dom = new DOM();
         URL resource = DOM.class.getResource("/menu.xml");
         DOMParser parser = new DOMParser();

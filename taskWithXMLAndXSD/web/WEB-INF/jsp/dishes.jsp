@@ -9,10 +9,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.local}"/>
-<fmt:setBundle basename="resources.pageContent" var="loc"/>
+<fmt:setBundle basename="pagecontent" var="loc"/>
 <html>
 <body>
-<table border="1">
+<h1>
+    "${sessionScope.local}"
+</h1>
+<table border="1" rules="all" cellpadding="10">
     <thead>
     <tr>
         <th><fmt:message key="thead.name" bundle="${loc}"/></th>
@@ -37,12 +40,12 @@
 </table>
 <fmt:message key="button.name.ru" bundle="${loc}" var="ru_button"/>
 <fmt:message key="button.name.en" bundle="${loc}" var="en_button"/>
-<form action="Controller" method="post">
-    <input type="hidden" name="local" value="ru"/><br/>
+<form action="${sessionScope.req}" method="post">
+    <input type="hidden" name="local" value="ru_RU"/><br/>
     <input type="submit" value="${ru_button}">
 </form>
-<form action="Controller" method="post">
-    <input type="hidden" name="local" value="en"/><br/>
+<form action="${sessionScope.req}" method="post">
+    <input type="hidden" name="local" value="en_US"/><br/>
     <input type="submit" value="${en_button}">
 </form>
 </body>

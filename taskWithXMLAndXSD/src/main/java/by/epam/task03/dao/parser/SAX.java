@@ -11,10 +11,16 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SAX {
+
+    //private static final Logger logger = LogManager.getLogger(SAX.class.getName());
+
     public static List<Dish> parseWithSAX() {
-        System.out.println("SAX is working");
+        //logger.info("SAX is working");
+        System.out.println(SAX.class.getName());
         URL resource = SAX.class.getResource("/menu.xml");
         MenuSaxHandler handler = new MenuSaxHandler();
         try {
