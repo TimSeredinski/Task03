@@ -19,10 +19,11 @@ public class Controller extends HttpServlet {
     public Controller() {
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("windows-1251");
         if (request.getParameter("local") == null) {
-            request.getSession(true).setAttribute("local", new Locale("ru","RU"));
+            request.getSession(true).setAttribute("local", new Locale("ru", "RU"));
         } else {
             request.getSession(true).setAttribute("local", request.getParameter("local"));
         }
@@ -40,7 +41,7 @@ public class Controller extends HttpServlet {
                 dish = parseWithDOM();
                 break;
             default:
-                dish = parseWithSAX();
+                dish = null;
                 break;
         }
         Object obj = dish;

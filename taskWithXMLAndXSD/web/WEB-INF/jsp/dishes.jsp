@@ -41,12 +41,15 @@
 <fmt:message key="button.name.ru" bundle="${loc}" var="ru_button"/>
 <fmt:message key="button.name.en" bundle="${loc}" var="en_button"/>
 <form action="${sessionScope.req}" method="post">
-    <input type="hidden" name="local" value="ru_RU"/><br/>
+    <input type="hidden" name="local" value="ru_RU"/>
     <input type="submit" value="${ru_button}">
 </form>
 <form action="${sessionScope.req}" method="post">
-    <input type="hidden" name="local" value="en_US"/><br/>
+    <input type="hidden" name="local" value="en_US"/>
     <input type="submit" value="${en_button}">
+</form>
+<form action="index.jsp" method="post">
+    <input type="submit" value="home">
 </form>
 </body>
 </html>
