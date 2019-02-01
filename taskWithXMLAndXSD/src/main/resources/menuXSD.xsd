@@ -18,6 +18,7 @@
             <element name="img" type="string"/>
             <element name="name" type="string"/>
             <element name="description" type="string"/>
+            <element name="extra_desc" type="tns:extra_desc" minOccurs="0"/>
             <element name="portion" type="string"/>
             <element name="price" type="double"/>
         </sequence>
@@ -28,6 +29,7 @@
             <element name="img"/>
             <element name="name" type="string"/>
             <element name="description" type="string"/>
+            <element name="extra_desc" type="tns:extra_desc" minOccurs="0"/>
             <element name="portion" type="string"/>
             <element name="price" type="double"/>
         </sequence>
@@ -38,10 +40,25 @@
             <element name="img"/>
             <element name="name" type="string"/>
             <element name="description" type="string"/>
+            <element name="extra_desc" type="tns:extra_desc" minOccurs="0"/>
             <element name="portion" type="string"/>
             <element name="price" type="double"/>
         </sequence>
         <attribute name="id" use="required"/>
     </complexType>
 
+
+    <complexType name="extra_desc">
+        <sequence>
+            <element name="addition" minOccurs="0" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element name="addition_desc" type="string"/>
+                        <element name="addition_portion" type="string"/>
+                        <element name="price" type="int"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
 </schema>

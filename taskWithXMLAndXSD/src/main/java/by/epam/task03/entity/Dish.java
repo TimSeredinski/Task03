@@ -5,18 +5,22 @@ public class Dish {
     private String name;
     private String img;
     private String description;
+    private String additionDesc;
     private String portion;
+    private String additionPortion;
     private double price;
 
     public Dish() {
     }
 
-    public Dish(int id, String name, String img, String description, String portion, double price) {
+    public Dish(int id, String name, String img, String description, String additionDesc, String portion, String additionPortion, double price) {
         this.id = id;
         this.name = name;
         this.img = img;
         this.description = description;
+        this.additionDesc = additionDesc;
         this.portion = portion;
+        this.additionPortion = additionPortion;
         this.price = price;
     }
 
@@ -52,12 +56,28 @@ public class Dish {
         this.description = description;
     }
 
+    public String getAdditionDesc() {
+        return additionDesc;
+    }
+
+    public void setAdditionDesc(String additionDesc) {
+        this.additionDesc = additionDesc;
+    }
+
     public String getPortion() {
         return portion;
     }
 
     public void setPortion(String portion) {
         this.portion = portion;
+    }
+
+    public String getAdditionPortion() {
+        return additionPortion;
+    }
+
+    public void setAdditionPortion(String additionPortion) {
+        this.additionPortion = additionPortion;
     }
 
     public double getPrice() {
@@ -73,7 +93,7 @@ public class Dish {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dish that = (Dish) o;
-        if (Integer.compare(that.id, this.id) != 0){
+        if (Integer.compare(that.id, this.id) != 0) {
             return false;
         }
         if (!(that.name != null ? that.name.equals(this.name) : this.name == null)) {
@@ -85,10 +105,16 @@ public class Dish {
         if (!(that.description != null ? that.description.equals(this.description) : this.description == null)) {
             return false;
         }
+        if (!(that.additionDesc != null ? that.additionDesc.equals(this.additionDesc) : this.additionDesc == null)) {
+            return false;
+        }
+        if (!(that.additionPortion != null ? that.additionPortion.equals(this.additionPortion) : this.additionPortion == null)) {
+            return false;
+        }
         if (!(that.portion != null ? that.portion.equals(this.portion) : this.portion == null)) {
             return false;
         }
-        if(Double.compare(that.price, this.price)!=0){
+        if (Double.compare(that.price, this.price) != 0) {
             return false;
         }
         return true;
@@ -102,6 +128,7 @@ public class Dish {
         result = prime * result + name.length();
         result = prime * result + img.length();
         result = prime * result + description.length();
+        result = prime * result + additionPortion.length();
         result = prime * result + portion.length();
         result = prime * result + (int) price;
         return result;

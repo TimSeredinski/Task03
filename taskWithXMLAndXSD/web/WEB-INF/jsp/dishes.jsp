@@ -28,8 +28,8 @@
     <tr>
         <td><c:out value="${dish.name}"/></td>
         <td><c:out value="${dish.img}"/></td>
-        <td><c:out value="${dish.description}"/></td>
-        <td><c:out value="${dish.portion}"/></td>
+        <td><c:out value="${dish.description}"/> <c:out value="${dish.additionDesc}"/></td>
+        <td><c:out value="${dish.portion}"/> <c:out value="${dish.additionPortion}"/></td>
         <td><c:out value="${dish.price}"/></td>
     </tr>
     </tbody>

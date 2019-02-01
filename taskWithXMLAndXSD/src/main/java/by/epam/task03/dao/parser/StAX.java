@@ -67,11 +67,21 @@ public class StAX {
                         case DESCRIPTION:
                             dish.setDescription(text);
                             break;
+                        case ADDITION_DESC:
+                            dish.setAdditionDesc(text);
+                            break;
                         case PORTION:
                             dish.setPortion(text);
                             break;
+                        case ADDITION_PORTION:
+                            dish.setAdditionPortion(text);
+                            break;
                         case PRICE:
-                            dish.setPrice(Double.parseDouble(text));
+                            if (dish.getPrice() == 0) {
+                                dish.setPrice(Double.parseDouble(text));
+                            } else {
+                                dish.setPrice(Double.parseDouble(text) + dish.getPrice());
+                            }
                             break;
                     }
                     break;

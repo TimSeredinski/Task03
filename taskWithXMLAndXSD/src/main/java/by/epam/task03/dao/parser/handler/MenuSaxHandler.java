@@ -52,11 +52,21 @@ public class MenuSaxHandler extends DefaultHandler {
             case DESCRIPTION:
                 dish.setDescription(text.toString());
                 break;
+            case ADDITION_DESC:
+                dish.setAdditionDesc(text.toString());
+                break;
             case PORTION:
                 dish.setPortion(text.toString());
                 break;
+            case ADDITION_PORTION:
+                dish.setAdditionPortion(text.toString());
+                break;
             case PRICE:
-                dish.setPrice(Double.parseDouble(text.toString()));
+                if (dish.getPrice() == 0) {
+                    dish.setPrice(Double.parseDouble(text.toString()));
+                } else {
+                    dish.setPrice(Double.parseDouble(text.toString()) + dish.getPrice());
+                }
                 break;
             case COLD_DISH:
                 dishList.add(dish);

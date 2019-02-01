@@ -28,7 +28,7 @@ public class SAX {
             reader.setContentHandler(handler);
             reader.parse(new InputSource(resource.toURI().getPath()));
         } catch (SAXException | URISyntaxException | IOException e) {
-            throw new DaoException("Exception in SAXParser");
+            e.printStackTrace();
         }
         List<Dish> menu = handler.getDishList();
         return menu;
