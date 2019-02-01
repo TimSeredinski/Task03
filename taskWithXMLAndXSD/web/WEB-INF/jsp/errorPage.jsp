@@ -12,5 +12,8 @@
 </head>
 <body>
 <h1>Error</h1>
+<form action="index.jsp" method="post">
+    <input type="submit" value="home">
+</form>
 </body>
 </html>

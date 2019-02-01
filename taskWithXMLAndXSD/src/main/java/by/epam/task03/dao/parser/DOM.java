@@ -1,9 +1,10 @@
 package by.epam.task03.dao.parser;
 
 import by.epam.task03.entity.Dish;
+import by.epam.task03.exception.DaoException;
 import com.sun.org.apache.xerces.internal.parsers.DOMParser;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -18,29 +19,30 @@ import java.util.List;
 
 public class DOM {
 
-    //private static final Logger logger = LogManager.getLogger(DOM.class.getName());
+    private static final Logger logger = LogManager.getLogger(DOM.class.getName());
 
-    public static List<Dish> parseWithDOM() {
-        //logger.info("DOM is working");
+    public static List<Dish> parseWithDOM() throws DaoException {
+        logger.info("DOM is working");
         System.out.println(DOM.class.getName());
+        List<Dish> menu = new ArrayList<>();
         DOM dom = new DOM();
-        URL resource = DOM.class.getResource("/menu.xml");
         DOMParser parser = new DOMParser();
         try {
+            URL resource = DOM.class.getResource("/menu.xml");
             parser.parse(new InputSource(resource.toURI().getPath()));
-        } catch (SAXException | URISyntaxException | IOException e) {
-            e.printStackTrace();
-        }
-        Document document = parser.getDocument();
-        Element root = document.getDocumentElement();
 
-        List<Dish> menu = new ArrayList<>();
-        NodeList coldDishNodes = root.getElementsByTagName("Cold-Dish");
-        NodeList warmDishNodes = root.getElementsByTagName("Warm-Dish");
-        NodeList breakfastNodes = root.getElementsByTagName("Breakfast");
-        menu = dom.addDishWithNodeList(menu, coldDishNodes);
-        menu = dom.addDishWithNodeList(menu, warmDishNodes);
-        menu = dom.addDishWithNodeList(menu, breakfastNodes);
+            Document document = parser.getDocument();
+            Element root = document.getDocumentElement();
+
+            NodeList coldDishNodes = root.getElementsByTagName("Cold-Dish");
+            NodeList warmDishNodes = root.getElementsByTagName("Warm-Dish");
+            NodeList breakfastNodes = root.getElementsByTagName("Breakfast");
+            menu = dom.addDishWithNodeList(menu, coldDishNodes);
+            menu = dom.addDishWithNodeList(menu, warmDishNodes);
+            menu = dom.addDishWithNodeList(menu, breakfastNodes);
+        } catch (SAXException | URISyntaxException | IOException e) {
+            throw new DaoException("Exception in DOMParser");
+        }
 
         return menu;
     }

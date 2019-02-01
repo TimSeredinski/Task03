@@ -12,9 +12,6 @@
 <fmt:setBundle basename="pagecontent" var="loc"/>
 <html>
 <body>
-<h1>
-    "${sessionScope.local}"
-</h1>
 <table border="1" rules="all" cellpadding="10">
     <thead>
     <tr>
@@ -40,6 +37,7 @@
 </table>
 <fmt:message key="button.name.ru" bundle="${loc}" var="ru_button"/>
 <fmt:message key="button.name.en" bundle="${loc}" var="en_button"/>
+<fmt:message key="button.name.home" bundle="${loc}" var="home"/>
 <form action="${sessionScope.req}" method="post">
     <input type="hidden" name="local" value="ru_RU"/>
     <input type="submit" value="${ru_button}">
@@ -49,7 +47,7 @@
     <input type="submit" value="${en_button}">
 </form>
 <form action="index.jsp" method="post">
-    <input type="submit" value="home">
+    <input type="submit" value="${home}">
 </form>
 </body>
 </html>

@@ -2,8 +2,9 @@ package by.epam.task03.dao.parser;
 
 import by.epam.task03.entity.Dish;
 import by.epam.task03.entity.MenuTagName;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import by.epam.task03.exception.DaoException;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -19,20 +20,20 @@ import java.util.List;
 
 public class StAX {
 
-    //private static final Logger logger = LogManager.getLogger(StAX.class.getName());
+    private static final Logger logger = LogManager.getLogger(StAX.class);
 
-    public static List<Dish> parseWithStAX() {
-        //logger.info("StAX is working");
+    public static List<Dish> parseWithStAX() throws DaoException {
+        logger.info("StAX is working");
         System.out.println(StAX.class.getName());
-        URL resource = StAX.class.getResource("/menu.xml");
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-        List<Dish> menu = null;
+        List<Dish> menu;
         try {
+            URL resource = StAX.class.getResource("/menu.xml");
             InputStream input = new FileInputStream(resource.toURI().getPath());
             XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
             menu = process(reader);
-        } catch (XMLStreamException|URISyntaxException|FileNotFoundException e) {
-            e.printStackTrace();
+        } catch (XMLStreamException | URISyntaxException | FileNotFoundException e) {
+            throw new DaoException("Exception in StAXParser");
         }
         return menu;
     }
