@@ -43,4 +43,5 @@
         </sequence>
         <attribute name="id" use="required"/>
     </complexType>
+
 </schema>

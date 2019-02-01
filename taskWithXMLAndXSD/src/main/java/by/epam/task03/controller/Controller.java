@@ -32,7 +32,7 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.warn("Controller's doPost() called");
+        logger.info("Controller's doPost() called");
         request.setCharacterEncoding("utf-8");
         if (request.getParameter("local") == null) {
             request.getSession(true).setAttribute("local", new Locale("ru", "RU"));
@@ -59,6 +59,7 @@ public class Controller extends HttpServlet {
             }
         } catch (DaoException e) {
             dish = null;
+            logger.error("DaoException", e);
         }
         Object obj = dish;
         request.setAttribute("myMenu", obj);

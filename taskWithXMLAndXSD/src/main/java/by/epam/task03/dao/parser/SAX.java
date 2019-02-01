@@ -21,7 +21,6 @@ public class SAX {
 
     public static List<Dish> parseWithSAX() throws DaoException {
         logger.info("SAX");
-        System.out.println(SAX.class.getName());
         MenuSaxHandler handler = new MenuSaxHandler();
         try {
             URL resource = SAX.class.getResource("/menu.xml");

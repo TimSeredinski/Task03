@@ -24,7 +24,6 @@ public class StAX {
 
     public static List<Dish> parseWithStAX() throws DaoException {
         logger.info("StAX is working");
-        System.out.println(StAX.class.getName());
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
         List<Dish> menu;
         try {

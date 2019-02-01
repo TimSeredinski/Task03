@@ -23,7 +23,6 @@ public class DOM {
 
     public static List<Dish> parseWithDOM() throws DaoException {
         logger.info("DOM is working");
-        System.out.println(DOM.class.getName());
         List<Dish> menu = new ArrayList<>();
         DOM dom = new DOM();
         DOMParser parser = new DOMParser();
